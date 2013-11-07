@@ -1,0 +1,9 @@
+#!/bin/sh -ex
+
+if [ `opam list -i mirage-xen -s 2>/dev/null` ]; then
+  export OS=xen
+else
+  export OS=unix
+fi
+
+./build $1
