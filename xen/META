@@ -1,0 +1,7 @@
+version = "0.9.9"
+description = "IO memory page handling library"
+archive(byte) = "io-page.cma"
+archive(byte, plugin) = "io-page.cma"
+archive(native) = "io-page.cmxa"
+archive(native, plugin) = "io-page.cmxs"
+exists_if = "io-page.cma"
