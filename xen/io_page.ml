@@ -65,3 +65,5 @@ let to_string t =
   result
 
 let blit src dest = Bigarray.Array1.blit src dest
+
+let round_to_page_size n = ((n + page_size - 1) lsr 12) lsl 12

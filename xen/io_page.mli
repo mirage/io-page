@@ -52,3 +52,7 @@ val string_blit : string -> int -> t -> int -> int -> unit
 
 val blit : t -> t -> unit
 (** [blit t1 t2] is the same as {!Bigarray.Array1.blit}. *)
+
+val round_to_page_size : int -> int
+(** [round_to_page_size n] returns the number of bytes that will be
+    allocated for storing [n] bytes in memory *)
