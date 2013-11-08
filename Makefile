@@ -1,16 +1,16 @@
-PHONY: all
+PHONY: all unix xen
 
-all:
+build:
 	./opam_build false
 
-unix:
-	OS=unix ./build
-
-xen:
-	OS=unix ./build
+%-build:
+	OS=$* ./build
 
 install:
 	./opam_build true
+
+%-install:
+	OS=$* ./build true
 
 clean:
 	rm -rf _build
