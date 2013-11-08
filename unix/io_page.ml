@@ -18,6 +18,8 @@ open Bigarray
 
 type t = (char, int8_unsigned_elt, c_layout) Array1.t
 
+type buf = Cstruct.t
+
 let page_size = 1 lsl 12
 
 let length t = Array1.dim t
