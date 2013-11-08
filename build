@@ -4,7 +4,6 @@ OS=${OS:-unix}
 OCAMLBUILD=ocamlbuild
 
 ocamlbuild -use-ocamlfind -pkg cstruct ${OS}/io-page.cma ${OS}/io-page.cmxa ${OS}/io-page.cmxs
-ocamlbuild -use-ocamlfind -pkg cstruct -pkg mirage-types -I ${OS} test/portable.cmo
 
 B=_build/${OS}
 if [ "$1" = "true" ]; then
@@ -12,4 +11,6 @@ if [ "$1" = "true" ]; then
   ocamlfind install io-page ${OS}/META \
     $B/io_page.cmo $B/io_page.cmi $B/io-page.cma \
     $B/io-page.a $B/io_page.cmx $B/io-page.cmxa $B/io-page.cmxs
+elif [ "$1" = "test" ]; then
+  ocamlbuild -use-ocamlfind -pkg cstruct -pkg mirage-types -I ${OS} lib_test/portable.cmo
 fi
