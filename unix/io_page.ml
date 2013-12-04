@@ -24,7 +24,15 @@ let page_size = 1 lsl 12
 
 let length t = Array1.dim t
 
-let get n = Array1.create char c_layout (n * page_size)
+external alloc_pages: int -> t = "caml_alloc_pages"
+
+let get n =
+  if n < 1
+  then raise (Invalid_argument "The number of page should be greater or equal to 1")
+  else
+    try alloc_pages n with _ ->
+    Gc.compact ();
+    try alloc_pages n with _ -> raise Out_of_memory
 
 let get_order order = get (1 lsl order)
 

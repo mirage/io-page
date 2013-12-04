@@ -1,16 +1,15 @@
 #!/bin/sh
 
 OS=${OS:-unix}
-OCAMLBUILD=ocamlbuild
 
-ocamlbuild -use-ocamlfind -pkg cstruct ${OS}/io-page.cma ${OS}/io-page.cmxa ${OS}/io-page.cmxs
+ocaml setup.ml -configure --enable-${OS}
+ocaml setup.ml -build
 
-B=_build/${OS}
 if [ "$1" = "true" ]; then
-  ocamlfind remove io-page || true
-  ocamlfind install io-page ${OS}/META \
-    $B/io_page.cmo $B/io_page.cmi $B/io-page.cma \
-    $B/io-page.a $B/io_page.cmx $B/io-page.cmxa $B/io-page.cmxs
+  ocamlfind remove io-page-${OS} || true
+  ocaml setup.ml -install
 elif [ "$1" = "test" ]; then
-  ocamlbuild -use-ocamlfind -pkg cstruct -pkg mirage-types -I ${OS} lib_test/portable.cmo
+  ocaml setup.ml -configure --enable-unix --enable-tests
+  ocaml setup.ml -build
+  ocaml setup.ml -test
 fi
