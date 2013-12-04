@@ -1,0 +1,48 @@
+OASISFormat: 0.3
+Name:        io-page
+Version:     0.9.9
+Synopsis:    Page-aligned memory allocator
+Authors:     Anil Madhavapeddy, David Scott
+License:     ISC
+Plugins:     META (0.3)
+BuildTools:  ocamlbuild
+
+Flag xen
+  Description:        build the xen library
+  Default:            false
+
+Flag unix
+  Description:        build the unix library
+  Default:            false
+
+Library "io-page-unix"
+  Build$:             flag(unix)
+  CompiledObject:     best
+  Path:               unix
+  Findlibname:        io-page-unix
+  Modules:            Io_page
+  BuildDepends:       cstruct
+  CSources:           stub_alloc_pages.c
+
+Library "io-page-xen"
+  Build$:             flag(xen)
+  CompiledObject:     best
+  Path:               xen
+  Findlibname:        io-page-xen
+  Modules:            Io_page
+  BuildDepends:       cstruct
+
+Executable portable
+  Build$:             flag(tests)
+  CompiledObject:     best
+  Path:               lib_test
+  MainIs:             portable.ml
+  Custom:             true
+  Install:            false
+  BuildDepends:       io-page-unix, mirage-types, oUnit
+  CSources:           stub_get_addr.c
+
+Test portable
+  Command:            ./portable.native
+  Run:                true
+
