@@ -17,6 +17,7 @@ Flag unix
 
 Library "io-page-unix"
   Build$:             flag(unix)
+  Install$:           flag(unix)
   CompiledObject:     best
   Path:               unix
   Findlibname:        io-page-unix
@@ -26,6 +27,7 @@ Library "io-page-unix"
 
 Library "io-page-xen"
   Build$:             flag(xen)
+  Install$:           flag(xen)
   CompiledObject:     best
   Path:               xen
   Findlibname:        io-page-xen

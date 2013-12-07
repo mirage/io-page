@@ -1,2 +1,6 @@
-0.9.9 (trunk):
+0.9.9 (07-Dec-2013):
+* Add Travis CI scripts.
+* Switch to an OASIS build system to fix META and C bindings.
+
+0.1.0 (02-Dec-2013):
 * Initial public release, based on mirage/mirage-platform#0.9.8
