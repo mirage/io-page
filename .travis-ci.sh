@@ -12,7 +12,7 @@ export OPAMYES=1
 export OPAMVERBOSE=1
 
 opam init
-opam install ocamlfind cstruct
+opam install ocamlfind cstruct ounit mirage-types
 eval `opam config env`
 make
 make unix-install
