@@ -1,6 +1,5 @@
 (*
- * Copyright (c) 2011 Anil Madhavapeddy <anil@recoil.org>
- * Copyright (C) 2012 Citrix Systems Inc
+ * Copyright (c) 2011-2012 Anil Madhavapeddy <anil@recoil.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -15,29 +14,32 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *)
 
-type t = (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
+open Bigarray
 
-type buf = Cstruct.t
+type t = (char, int8_unsigned_elt, c_layout) Array1.t
+
+type buffer = Cstruct.t
+
+let page_size = 1 lsl 12
+
+let length t = Array1.dim t
 
 external alloc_pages: int -> t = "caml_alloc_pages"
 
-let page_size = 4096
-
 let get n =
-  if n < 1
-  then raise (Invalid_argument "The number of page should be greater or equal to 1")
+  if n < 0
+  then raise (Invalid_argument "Io_page.get cannot allocate a -ve number of pages")
+  else if n = 0
+  then Array1.create char c_layout 0
   else
     try alloc_pages n with _ ->
-      Gc.compact ();
-      try alloc_pages n with _ -> raise Out_of_memory
+    Gc.compact ();
+    try alloc_pages n with _ -> raise Out_of_memory
 
 let get_order order = get (1 lsl order)
 
-let length t = Bigarray.Array1.dim t
-
 let to_pages t =
-  if length t mod page_size <> 0
-  then raise (Invalid_argument "Argument length should be a multiple of PAGE_SIZE");
+  assert(length t mod page_size = 0);
   let rec loop off acc =
     if off < (length t)
     then loop (off + page_size) (Bigarray.Array1.sub t off page_size :: acc)
@@ -45,17 +47,15 @@ let to_pages t =
   List.rev (loop 0 [])
 
 let pages n =
-  let rec inner acc n = if n > 0 then inner (get 1 :: acc) (n-1) else acc
+  let rec inner acc n =
+    if n > 0 then inner ((get 1)::acc) (n-1) else acc
   in inner [] n
 
 let pages_order order = pages (1 lsl order)
 
-let to_cstruct t = Cstruct.of_bigarray t
+let round_to_page_size n = ((n + page_size - 1) lsr 12) lsl 12
 
-let string_blit src srcoff dst dstoff len =
-  for i = 0 to len - 1 do
-    dst.{i+dstoff} <- src.[i+srcoff]
-  done
+let to_cstruct t = Cstruct.of_bigarray t
 
 let to_string t =
   let result = String.create (length t) in
@@ -66,4 +66,9 @@ let to_string t =
 
 let blit src dest = Bigarray.Array1.blit src dest
 
-let round_to_page_size n = ((n + page_size - 1) lsr 12) lsl 12
+(* TODO: this is extremely inefficient.  Should use a ocp-endian
+   blit rather than a byte-by-byte *)
+let string_blit src srcoff dst dstoff len =
+  for i = 0 to len - 1 do
+    dst.{i+dstoff} <- src.[i+srcoff]
+  done
