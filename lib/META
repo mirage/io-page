@@ -1,6 +1,6 @@
 # OASIS_START
-# DO NOT EDIT (digest: e56aec27bf688f089a993d46e2bb2243)
-version = "0.9.9"
+# DO NOT EDIT (digest: d31855ff6c0e05599e28c9271c2bbf4e)
+version = "1.0.0"
 description = "Page-aligned memory allocator"
 requires = "cstruct mirage-types"
 archive(byte) = "io-page.cma"
@@ -9,7 +9,7 @@ archive(native) = "io-page.cmxa"
 archive(native, plugin) = "io-page.cmxs"
 exists_if = "io-page.cma"
 package "unix" (
- version = "0.9.9"
+ version = "1.0.0"
  description = "Page-aligned memory allocator"
  requires = "io-page"
  archive(byte) = "io-page-unix.cma"
