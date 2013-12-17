@@ -1,6 +1,6 @@
 OASISFormat: 0.3
 Name:        io-page
-Version:     0.9.9
+Version:     1.0.0
 Synopsis:    Page-aligned memory allocator
 Authors:     Anil Madhavapeddy, David Scott, Thomas Gazagnaire
 License:     ISC
