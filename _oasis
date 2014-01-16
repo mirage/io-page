@@ -11,21 +11,21 @@ Flag unix
   Description:        build the unix library
   Default:            true
 
-Library "io-page"
+Library io_page
   CompiledObject:     best
   Path:               lib
   Findlibname:        io-page
   Modules:            Io_page
   BuildDepends:       cstruct, mirage-types
 
-Library "io-page-unix"
+Library io_page_unix
   Build$:             flag(unix)
   CompiledObject:     best
   Path:               lib
-  FindlibParent:      io-page
+  FindlibParent:      io_page
   Findlibname:        unix
   Modules:            Io_page_unix # Dummy module to compile the library
-  BuildDepends:       io-page
+  BuildDepends:       io_page
   CSources:           stub_alloc_pages.c
 
 Executable portable
