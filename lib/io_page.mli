@@ -17,4 +17,4 @@
 
 (** Memory allocation. *)
 
-include V1.IO_PAGE with type buffer = Cstruct.t
+include V1.IO_PAGE with type buf = Cstruct.t
