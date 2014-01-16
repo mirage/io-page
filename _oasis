@@ -35,7 +35,7 @@ Executable portable
   MainIs:             portable.ml
   Custom:             true
   Install:            false
-  BuildDepends:       io-page.unix, mirage-types, oUnit
+  BuildDepends:       io-page.unix, io-page, mirage-types, oUnit
   CSources:           stub_get_addr.c
 
 Test portable
