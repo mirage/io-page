@@ -1,3 +1,5 @@
+CONFIGUREFLAGS = --enable-tests
+
 # OASIS_START
 # DO NOT EDIT (digest: 7b2408909643717852b95f994b273fee)
 
