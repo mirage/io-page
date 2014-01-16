@@ -1,38 +1,32 @@
 OASISFormat: 0.3
 Name:        io-page
-Version:     0.9.9
+Version:     1.0.0
 Synopsis:    Page-aligned memory allocator
-Authors:     Anil Madhavapeddy, David Scott
+Authors:     Anil Madhavapeddy, David Scott, Thomas Gazagnaire
 License:     ISC
-Plugins:     META (0.3)
+Plugins:     META (0.3), DevFiles (0.3)
 BuildTools:  ocamlbuild
-
-Flag xen
-  Description:        build the xen library
-  Default:            false
 
 Flag unix
   Description:        build the unix library
-  Default:            false
+  Default:            true
 
-Library "io-page-unix"
+Library io_page
+  CompiledObject:     best
+  Path:               lib
+  Findlibname:        io-page
+  Modules:            Io_page
+  BuildDepends:       cstruct, mirage-types
+
+Library io_page_unix
   Build$:             flag(unix)
-  Install$:           flag(unix)
   CompiledObject:     best
-  Path:               unix
-  Findlibname:        io-page-unix
-  Modules:            Io_page
-  BuildDepends:       cstruct
+  Path:               lib
+  FindlibParent:      io_page
+  Findlibname:        unix
+  Modules:            Io_page_unix # Dummy module to compile the library
+  BuildDepends:       bigarray
   CSources:           stub_alloc_pages.c
-
-Library "io-page-xen"
-  Build$:             flag(xen)
-  Install$:           flag(xen)
-  CompiledObject:     best
-  Path:               xen
-  Findlibname:        io-page-xen
-  Modules:            Io_page
-  BuildDepends:       cstruct
 
 Executable portable
   Build$:             flag(tests)
@@ -41,10 +35,9 @@ Executable portable
   MainIs:             portable.ml
   Custom:             true
   Install:            false
-  BuildDepends:       io-page-unix, mirage-types, oUnit
+  BuildDepends:       io-page.unix, io-page, mirage-types, oUnit
   CSources:           stub_get_addr.c
 
 Test portable
   Command:            ./portable.native
   Run:                true
-

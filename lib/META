@@ -1,0 +1,22 @@
+# OASIS_START
+# DO NOT EDIT (digest: 9462611e2382968328a24258767ae75e)
+version = "1.0.0"
+description = "Page-aligned memory allocator"
+requires = "cstruct mirage-types"
+archive(byte) = "io_page.cma"
+archive(byte, plugin) = "io_page.cma"
+archive(native) = "io_page.cmxa"
+archive(native, plugin) = "io_page.cmxs"
+exists_if = "io_page.cma"
+package "unix" (
+ version = "1.0.0"
+ description = "Page-aligned memory allocator"
+ requires = "bigarray"
+ archive(byte) = "io_page_unix.cma"
+ archive(byte, plugin) = "io_page_unix.cma"
+ archive(native) = "io_page_unix.cmxa"
+ archive(native, plugin) = "io_page_unix.cmxs"
+ exists_if = "io_page_unix.cma"
+)
+# OASIS_STOP
+

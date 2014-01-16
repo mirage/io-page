@@ -1,3 +1,7 @@
+1.0.0 (trunk)
+* Refactor the library into one pure-OCaml library (`io-page`)
+  library and the Unix C-bindings (`io-page.unix`).
+
 0.9.9 (07-Dec-2013):
 * Add Travis CI scripts.
 * Switch to an OASIS build system to fix META and C bindings.
