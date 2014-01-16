@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 08df8a943231d643d701f2fb6e2c8404) *)
+(* DO NOT EDIT (digest: b4306121e69aa3334f73027918ab9d79) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -368,7 +368,11 @@ module MyOCamlbuildFindlib = struct
           flag ["ocaml"; "pkg_threads"; "compile"] (S[A "-thread"]);
           flag ["ocaml"; "pkg_threads"; "doc"] (S[A "-I"; A "+threads"]);
           flag ["ocaml"; "pkg_threads"; "link"] (S[A "-thread"]);
-          flag ["ocaml"; "pkg_threads"; "infer_interface"] (S[A "-thread"])
+          flag ["ocaml"; "pkg_threads"; "infer_interface"] (S[A "-thread"]);
+          flag ["ocaml"; "package(threads)"; "compile"] (S[A "-thread"]);
+          flag ["ocaml"; "package(threads)"; "doc"] (S[A "-I"; A "+threads"]);
+          flag ["ocaml"; "package(threads)"; "link"] (S[A "-thread"]);
+          flag ["ocaml"; "package(threads)"; "infer_interface"] (S[A "-thread"]);
 
       | _ ->
           ()
@@ -547,13 +551,13 @@ module MyOCamlbuildBase = struct
 end
 
 
-# 550 "myocamlbuild.ml"
+# 554 "myocamlbuild.ml"
 open Ocamlbuild_plugin;;
 let package_default =
   {
      MyOCamlbuildBase.lib_ocaml =
-       [("io-page", ["lib"], []); ("io-page-unix", ["lib"], [])];
-     lib_c = [("io-page-unix", "lib", []); ("portable", "lib_test", [])];
+       [("io_page", ["lib"], []); ("io_page_unix", ["lib"], [])];
+     lib_c = [("io_page_unix", "lib", []); ("portable", "lib_test", [])];
      flags = [];
      includes = [("lib_test", ["lib"])]
   }
@@ -561,6 +565,6 @@ let package_default =
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default package_default;;
 
-# 565 "myocamlbuild.ml"
+# 569 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;
