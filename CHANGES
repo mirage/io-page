@@ -1,4 +1,4 @@
-1.0.0 (trunk)
+1.0.0 (16-Jan-2014)
 * Refactor the library into one pure-OCaml library (`io-page`)
   library and the Unix C-bindings (`io-page.unix`).
 
