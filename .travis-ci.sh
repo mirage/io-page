@@ -1,3 +1,6 @@
+# OPAM packages needed to build tests.
+OPAM_PACKAGES="cstruct mirage-types"
+
 case "$OCAML_VERSION,$OPAM_VERSION" in
 3.12.1,1.1.0) ppa=avsm/ocaml312+opam11 ;;
 4.00.1,1.1.0) ppa=avsm/ocaml40+opam11 ;;
@@ -14,6 +17,7 @@ export OPAMVERBOSE=1
 opam init
 opam install ocamlfind cstruct ounit mirage-types
 eval `opam config env`
+opam install ${OPAM_PACKAGES}
 make
 make unix-install
 make xen-install
