@@ -25,7 +25,7 @@ Library io_page_unix
   FindlibParent:      io_page
   Findlibname:        unix
   Modules:            Io_page_unix # Dummy module to compile the library
-  BuildDepends:       io-page
+  BuildDepends:       bigarray
   CSources:           stub_alloc_pages.c
 
 Executable portable
