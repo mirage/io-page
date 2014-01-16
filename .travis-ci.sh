@@ -19,6 +19,5 @@ opam install ocamlfind cstruct ounit mirage-types
 eval `opam config env`
 opam install ${OPAM_PACKAGES}
 make
-make unix-install
-make xen-install
+make install
 make test
