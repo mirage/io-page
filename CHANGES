@@ -1,4 +1,9 @@
-1.0.0 (16-Jan-2014)
+1.0.1 (trunk):
+* Do not depend directly on the mirage-types signature to help
+  break a circular dependency.  The `portable` test still exists
+  to check against when changing anything.
+
+1.0.0 (16-Jan-2014):
 * Refactor the library into one pure-OCaml library (`io-page`)
   library and the Unix C-bindings (`io-page.unix`).
 
