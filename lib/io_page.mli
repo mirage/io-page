@@ -19,8 +19,8 @@
 
 (** Memory allocation interface. *)
 
-type buf
-(** Type of a C buffer (usually Cstruct) *)
+type buf = Cstruct.t
+(** Type of a C buffer (in this case, a Cstruct) *)
 
 type t = (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
 (** Type of memory blocks. *)
