@@ -1,6 +1,6 @@
 OASISFormat: 0.3
 Name:        io-page
-Version:     1.0.0
+Version:     1.0.1
 Synopsis:    Page-aligned memory allocator
 Authors:     Anil Madhavapeddy, David Scott, Thomas Gazagnaire
 License:     ISC
@@ -16,7 +16,7 @@ Library io_page
   Path:               lib
   Findlibname:        io-page
   Modules:            Io_page
-  BuildDepends:       cstruct, mirage-types
+  BuildDepends:       cstruct
 
 Library io_page_unix
   Build$:             flag(unix)
@@ -29,13 +29,13 @@ Library io_page_unix
   CSources:           stub_alloc_pages.c
 
 Executable portable
-  Build$:             flag(tests)
+  Build:             false
   CompiledObject:     best
   Path:               lib_test
   MainIs:             portable.ml
   Custom:             true
   Install:            false
-  BuildDepends:       io-page.unix, io-page, mirage-types, oUnit
+  BuildDepends:       io-page.unix, io-page, mirage.types, oUnit
   CSources:           stub_get_addr.c
 
 Test portable

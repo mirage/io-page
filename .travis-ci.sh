@@ -20,4 +20,3 @@ eval `opam config env`
 opam install ${OPAM_PACKAGES}
 make
 make install
-make test
