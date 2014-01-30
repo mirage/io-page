@@ -1,4 +1,4 @@
-1.0.1 (trunk):
+1.1.0 (30-Jan-2014):
 * Do not depend directly on the mirage-types signature to help
   break a circular dependency.  The `portable` test still exists
   to check against when changing anything.
