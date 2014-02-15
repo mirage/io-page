@@ -1,3 +1,7 @@
+1.1.1 (15-Feb-2014):
+* Improve portability on *BSD by not including `malloc.h` and
+  just using `stdlib.h` instead.
+
 1.1.0 (30-Jan-2014):
 * Do not depend directly on the mirage-types signature to help
   break a circular dependency.  The `portable` test still exists
