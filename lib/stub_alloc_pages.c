@@ -33,9 +33,6 @@
 
 #define PAGE_SIZE 4096
 #include <stdlib.h>
-#if !defined(__APPLE__)
-#include <malloc.h>
-#endif
 
 /* Allocate a page-aligned bigarray of length [n_pages] pages.
    Since CAML_BA_MANAGED is set the bigarray C finaliser will
