@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 1d0ad77823fbc76460242a3b0204dd73)
+# DO NOT EDIT (digest: 40300a99c4b08a1a74299662eea2d6fa)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -26,19 +26,19 @@ true: annot, bin_annot
 <lib_test/portable.{native,byte}>: use_libportable_stubs
 <lib_test/portable.{native,byte}>: pkg_bigarray
 <lib_test/portable.{native,byte}>: pkg_cstruct
-<lib_test/portable.{native,byte}>: pkg_mirage.types
+<lib_test/portable.{native,byte}>: pkg_mirage-types
 <lib_test/portable.{native,byte}>: pkg_oUnit
 <lib_test/portable.{native,byte}>: use_io_page
 <lib_test/portable.{native,byte}>: use_io_page_unix
 <lib_test/*.ml{,i,y}>: pkg_bigarray
 <lib_test/*.ml{,i,y}>: pkg_cstruct
-<lib_test/*.ml{,i,y}>: pkg_mirage.types
+<lib_test/*.ml{,i,y}>: pkg_mirage-types
 <lib_test/*.ml{,i,y}>: pkg_oUnit
 <lib_test/*.ml{,i,y}>: use_io_page
 <lib_test/*.ml{,i,y}>: use_io_page_unix
 "lib_test/stub_get_addr.c": pkg_bigarray
 "lib_test/stub_get_addr.c": pkg_cstruct
-"lib_test/stub_get_addr.c": pkg_mirage.types
+"lib_test/stub_get_addr.c": pkg_mirage-types
 "lib_test/stub_get_addr.c": pkg_oUnit
 "lib_test/stub_get_addr.c": use_io_page
 "lib_test/stub_get_addr.c": use_io_page_unix

@@ -29,13 +29,13 @@ Library io_page_unix
   CSources:           stub_alloc_pages.c
 
 Executable portable
-  Build:             false
+  Build$:             flag(tests)
   CompiledObject:     best
   Path:               lib_test
   MainIs:             portable.ml
   Custom:             true
   Install:            false
-  BuildDepends:       io-page.unix, io-page, mirage.types, oUnit
+  BuildDepends:       io-page.unix, io-page, mirage-types, oUnit
   CSources:           stub_get_addr.c
 
 Test portable
