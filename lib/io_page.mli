@@ -43,7 +43,11 @@ val length : t -> int
 (** [length t] is the size of [t], in bytes. *)
 
 val to_cstruct : t -> buf
+(** [to_cstruct t] generates a {!Cstruct.t} that covers the entire Io_page. *)
+
 val to_string : t -> string
+(** [to_string t] will allocate a fresh {!string} and copy the contents of [t]
+    into the string. *)
 
 val to_pages : t -> t list
 (** [to_pages t] is a list of [size] memory blocks of one page each,

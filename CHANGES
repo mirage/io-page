@@ -1,3 +1,7 @@
+1.1.2 (21-Nov-2014):
+* Improve ocamldoc for exported functions.
+* Add OPAM 1.2 file for easier local pinning workflow.
+
 1.1.1 (15-Feb-2014):
 * Improve portability on *BSD by not including `malloc.h` and
   just using `stdlib.h` instead.
