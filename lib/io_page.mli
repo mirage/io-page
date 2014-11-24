@@ -27,7 +27,35 @@ type t = (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
 
 val get : int -> t
 (** [get n] allocates and returns a memory block of [n] pages. If
-    there is not enough memory, the unikernel will terminate. *)
+    there is not enough memory, an [Out_of_memory] exception is
+    raised.  Note that this may be a recoverable situation, since
+    this function allocates memory from a page-aligned pool, whereas
+    the OCaml garbage collector will be running in its own heap that
+    may have spare memory despite the [Out_of_memory] being raised
+    from this function call. *)
+
+val get_buf : ?n:int -> unit -> buf
+(** [get_buf n] allocates and returns a memory block of [n] pages,
+    represented as a {!Cstruct.t}. If there is not enough memory,
+    an [Out_of_memory] exception is raised. *)
+
+val get_order : int -> t
+(** [get_order i] is [get (1 lsl i)]. *)
+
+val pages : int -> t list
+(** [pages n] allocates a memory block of [n] pages and return the
+    list of pages allocated. *)
+
+val pages_order : int -> t list
+(** [pages_order i] is [pages (1 lsl i)]. *)
+
+val length : t -> int
+(** [length t] is the size of [t], in bytes. *)
+
+val to_cstruct : t -> buf
+(** [to_cstruct t] generates a {!Cstruct.t} that covers the entire Io_page. *)
+
+val to_string : t -> string
 
 val get_order : int -> t
 (** [get_order i] is [get (1 lsl i)]. *)

@@ -1,4 +1,7 @@
-1.1.2 (21-Nov-2014):
+1.2.0 (21-Nov-2014):
+* Add `Io_page.get_buf` which allocates an Io_page
+  and immediately turns it into a Cstruct that spans the
+  entire page.
 * Improve ocamldoc for exported functions.
 * Add OPAM 1.2 file for easier local pinning workflow.
 

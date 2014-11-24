@@ -64,6 +64,9 @@ let to_string t =
   done;
   result
 
+let get_buf ?(n=1) () =
+  to_cstruct (get n)
+
 let blit src dest = Bigarray.Array1.blit src dest
 
 (* TODO: this is extremely inefficient.  Should use a ocp-endian
