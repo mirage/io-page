@@ -9,3 +9,4 @@ prefix=`opam config var prefix`
 ./configure --prefix=$prefix --enable-tests
 make
 make test
+make install
