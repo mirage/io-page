@@ -1,3 +1,6 @@
+* Make Io_page.t type private.
+  Otherwise, any old array of bytes can be used as an Io_page.t.
+
 1.2.0 (21-Nov-2014):
 * Add `Io_page.get_buf` which allocates an Io_page
   and immediately turns it into a Cstruct that spans the
