@@ -1,5 +1,4 @@
 open OUnit
-module I = Io_page
 
 external get_addr : Io_page.t -> int64 = "caml_get_addr"
 

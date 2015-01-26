@@ -22,7 +22,7 @@
 type buf = Cstruct.t
 (** Type of a C buffer (in this case, a Cstruct) *)
 
-type t = (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
+type t = private (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
 (** Type of memory blocks. *)
 
 val get : int -> t
@@ -44,24 +44,6 @@ val get_order : int -> t
 
 val pages : int -> t list
 (** [pages n] allocates a memory block of [n] pages and return the
-    list of pages allocated. *)
-
-val pages_order : int -> t list
-(** [pages_order i] is [pages (1 lsl i)]. *)
-
-val length : t -> int
-(** [length t] is the size of [t], in bytes. *)
-
-val to_cstruct : t -> buf
-(** [to_cstruct t] generates a {!Cstruct.t} that covers the entire Io_page. *)
-
-val to_string : t -> string
-
-val get_order : int -> t
-(** [get_order i] is [get (1 lsl i)]. *)
-
-val pages : int -> t list
-(** [pages n] allocates a memory block of [n] pages and return the the
     list of pages allocated. *)
 
 val pages_order : int -> t list
