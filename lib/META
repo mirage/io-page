@@ -1,8 +1,8 @@
 # OASIS_START
-# DO NOT EDIT (digest: f83d3aa244a01e2343f5f3eb5a65fcbc)
+# DO NOT EDIT (digest: 0ec2e414e226f3b9fdd1a9430a291365)
 version = "1.3.0"
 description = "Page-aligned memory allocator"
-requires = "cstruct"
+requires = "cstruct bytes"
 archive(byte) = "io_page.cma"
 archive(byte, plugin) = "io_page.cma"
 archive(native) = "io_page.cmxa"

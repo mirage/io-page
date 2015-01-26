@@ -16,7 +16,7 @@ Library io_page
   Path:               lib
   Findlibname:        io-page
   Modules:            Io_page
-  BuildDepends:       cstruct
+  BuildDepends:       cstruct, bytes
 
 Library io_page_unix
   Build$:             flag(unix)

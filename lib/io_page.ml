@@ -58,9 +58,9 @@ let round_to_page_size n = ((n + page_size - 1) lsr 12) lsl 12
 let to_cstruct t = Cstruct.of_bigarray t
 
 let to_string t =
-  let result = String.create (length t) in
+  let result = Bytes.create (length t) in
   for i = 0 to length t - 1 do
-    result.[i] <- t.{i}
+    Bytes.set result i t.{i}
   done;
   result
 
