@@ -25,6 +25,9 @@ type buf = Cstruct.t
 type t = private (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
 (** Type of memory blocks. *)
 
+val page_size : int
+(** Size of one page of memory in bytes. *)
+
 val get : int -> t
 (** [get n] allocates and returns a memory block of [n] pages. If
     there is not enough memory, an [Out_of_memory] exception is
