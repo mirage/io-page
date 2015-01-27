@@ -55,6 +55,12 @@ val length : t -> int
 val to_cstruct : t -> buf
 (** [to_cstruct t] generates a {!Cstruct.t} that covers the entire Io_page. *)
 
+val of_cstruct_exn : buf -> t
+(** [of_cstruct t] converts a page-aligned buffer back to an Io_page.
+ * It raises an exception if the cstruct is not page aligned or not a whole number
+ * of pages in length.
+ * TODO: currently assumes the underlying Bigarray is page aligned. *)
+
 val to_string : t -> string
 (** [to_string t] will allocate a fresh {!string} and copy the contents of [t]
     into the string. *)
