@@ -1,6 +1,6 @@
 # OASIS_START
-# DO NOT EDIT (digest: 0ec2e414e226f3b9fdd1a9430a291365)
-version = "1.3.0"
+# DO NOT EDIT (digest: 22dc5124ba263e5891e0487b08ecd93b)
+version = "1.4.0"
 description = "Page-aligned memory allocator"
 requires = "cstruct bytes"
 archive(byte) = "io_page.cma"
@@ -9,7 +9,7 @@ archive(native) = "io_page.cmxa"
 archive(native, plugin) = "io_page.cmxs"
 exists_if = "io_page.cma"
 package "unix" (
- version = "1.3.0"
+ version = "1.4.0"
  description = "Page-aligned memory allocator"
  requires = "bigarray"
  archive(byte) = "io_page_unix.cma"
