@@ -52,5 +52,5 @@ caml_alloc_pages(value n_pages)
   if (ret < 0) {
     caml_failwith("memalign");
   }
-  CAMLreturn(caml_ba_alloc_dims(CAML_BA_UINT8 | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
+  CAMLreturn(caml_ba_alloc_dims(CAML_BA_CHAR | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
 }
