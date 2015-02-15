@@ -30,6 +30,7 @@
 #include <caml/fail.h>
 #include <caml/callback.h>
 #include <caml/bigarray.h>
+#include <caml/version.h>
 
 #define PAGE_SIZE 4096
 #include <stdlib.h>
@@ -52,5 +53,10 @@ caml_alloc_pages(value n_pages)
   if (ret < 0) {
     caml_failwith("memalign");
   }
+#if OCAML_VERSION_MAJOR >= 4 && OCAML_VERSION_MINOR >= 1
   CAMLreturn(caml_ba_alloc_dims(CAML_BA_CHAR | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
+#else
+  CAMLreturn(caml_ba_alloc_dims(CAML_BA_UINT8 | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
+#endif
+
 }
