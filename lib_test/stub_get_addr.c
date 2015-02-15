@@ -34,9 +34,6 @@
 
 #define PAGE_SIZE 4096
 #include <stdlib.h>
-#if !defined(__APPLE__)
-#include <malloc.h>
-#endif
 
 CAMLprim value
 caml_get_addr(value page)
