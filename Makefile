@@ -47,8 +47,8 @@ NAME    = $(shell grep 'Name:' _oasis    | sed 's/Name: *//')
 ARCHIVE = https://github.com/mirage/$(NAME)/archive/v$(VERSION).tar.gz
 
 release:
-	git tag -a $(VERSION) -m "Version $(VERSION)."
-	git push upstream $(VERSION)
+	git tag -a v$(VERSION) -m "Version $(VERSION)."
+	git push upstream v$(VERSION)
 	$(MAKE) pr
 
 pr:
