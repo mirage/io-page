@@ -6,10 +6,15 @@ Authors:     Anil Madhavapeddy, David Scott, Thomas Gazagnaire
 License:     ISC
 Plugins:     META (0.4), DevFiles (0.4)
 BuildTools:  ocamlbuild
+PostConfCommand: ocaml postconf.ml
 
 Flag unix
   Description:        build the unix library
   Default:            true
+
+Flag xen
+  Description:        Build Xen support
+  Default:            false
 
 Library io_page
   CompiledObject:     best
@@ -17,6 +22,7 @@ Library io_page
   Findlibname:        io-page
   Modules:            Io_page
   BuildDepends:       cstruct, bytes
+  XMETAExtraLines:    xen_linkopts = "-lio_page_xen_stubs"
 
 Library io_page_unix
   Build$:             flag(unix)
@@ -27,6 +33,16 @@ Library io_page_unix
   Modules:            Io_page_unix # Dummy module to compile the library
   BuildDepends:       bigarray
   CSources:           stub_alloc_pages.c
+
+Library io_page_xen
+  Build$:             flag(xen)
+  CompiledObject:     best
+  Path:               lib
+  FindlibParent:      io_page
+  Findlibname:        xen
+  BuildDepends:       bigarray
+  CSources:           stub_alloc_pages_xen.c
+  CCOpt:              -O2 $XEN_CFLAGS
 
 Executable portable
   Build$:             flag(tests)

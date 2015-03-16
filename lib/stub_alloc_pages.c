@@ -15,24 +15,29 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifdef __MINIOS__
+#include <mini-os/os.h>
+#include <mini-os/console.h>
+#include <mini-os/xmalloc.h>
+#else
 #define _GNU_SOURCE
-
 #include <sys/types.h>
 #include <sys/stat.h>
-
 #include <fcntl.h>
-#include <string.h>
 #include <unistd.h>
-
-#include <caml/alloc.h>
-#include <caml/memory.h>
-#include <caml/signals.h>
-#include <caml/fail.h>
-#include <caml/callback.h>
-#include <caml/bigarray.h>
-
-#define PAGE_SIZE 4096
 #include <stdlib.h>
+#include <stdio.h>
+#define PAGE_SIZE 4096
+#define printk printf
+#endif
+
+#include <string.h>
+
+#include <caml/mlvalues.h>
+#include <caml/memory.h>
+#include <caml/alloc.h>
+#include <caml/fail.h>
+#include <caml/bigarray.h>
 
 /* Allocate a page-aligned bigarray of length [n_pages] pages.
    Since CAML_BA_MANAGED is set the bigarray C finaliser will
@@ -46,11 +51,34 @@ caml_alloc_pages(value n_pages)
   /* If the allocation fails, return None. The ocaml layer will
      be able to trigger a full GC which just might run finalizers
      of unused bigarrays which will free some memory. */
+#ifdef __MINIOS__
+  void* block = _xmalloc(len, PAGE_SIZE);
+  if (block == NULL) {
+#else
   void* block = NULL;
   int ret = posix_memalign(&block, PAGE_SIZE, len);
-
   if (ret < 0) {
+#endif
+    printk("memalign(%d, %zu) failed.\n", PAGE_SIZE, len);
     caml_failwith("memalign");
   }
+  /* Explicitly zero the page before returning it */
+  memset(block, 0, len);
+
+/* OCaml 4.02 introduced bigarray element type CAML_BA_CHAR,
+   which needs to be used - otherwise type t in io_page.ml
+   is different from the allocated bigarray and equality won't
+   hold.
+   Only since 4.02 there is a <caml/version.h>, thus we cannot
+   include it in order to detect the version of the OCaml runtime.
+   Instead, we use definitions which were introduced by 4.02 - and
+   cross fingers that they'll stay there in the future.
+   Once <4.02 support is removed, we should get rid of this hack.
+   -- hannes, 16th Feb 2015
+ */
+#ifdef Caml_ba_kind_val
+  CAMLreturn(caml_ba_alloc_dims(CAML_BA_CHAR | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
+#else
   CAMLreturn(caml_ba_alloc_dims(CAML_BA_UINT8 | CAML_BA_C_LAYOUT | CAML_BA_MANAGED, 1, block, len));
+#endif
 }
