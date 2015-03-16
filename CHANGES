@@ -1,3 +1,7 @@
+1.5.0 (16-Mar-2015)
+* Fix equallity of io-pages (#17, patch from @hannesm)
+* Import C stubs from mirage-platform (#18, patch from @hannesm)
+
 1.4.0 (28-Jan-2015):
 * Add `of_cstruct_exn` as a safe way to turn a Cstruct back into an `Io_page.t`.
 * Expose `page_size` constant in interface.
