@@ -11,7 +11,7 @@ authors: [
 tags: ["org:mirage"]
 build: [
   [ "./configure" "--prefix" prefix
-     "--%{mirage-xen-minios:enable}%-xen"
+     "--%{mirage-xen-ocaml:enable}%-xen"
   ]
   [make]
 ]
@@ -23,6 +23,6 @@ depends: [
   "ounit" {test}
 ]
 depopts: [
-  "mirage-xen-minios"
+  "mirage-xen-ocaml"
 ]
 available: [ocaml-version >= "4.00.0"]
