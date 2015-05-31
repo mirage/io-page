@@ -15,8 +15,14 @@ build: [
   ]
   [make]
 ]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "io-page"]
+install: [
+  [make "install"]
+  [make "js-install"]
+]
+remove: [
+  [make "js-uninstall"]
+  ["ocamlfind" "remove" "io-page"]
+]
 depends: [
   "ocamlfind"
   "cstruct" {>="1.1.0"}
