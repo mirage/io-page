@@ -38,13 +38,21 @@ setup.data:
 configure:
 	$(SETUP) -configure $(CONFIGUREFLAGS)
 
-.PHONY: build doc test all install uninstall reinstall clean distclean configure
+.PHONY: build doc test all install uninstall reinstall clean distclean configure js-install js-uninstall
 
 # OASIS_STOP
 
 VERSION = $(shell grep 'Version:' _oasis | sed 's/Version: *//')
 NAME    = $(shell grep 'Name:' _oasis    | sed 's/Name: *//')
 ARCHIVE = https://github.com/mirage/$(NAME)/archive/v$(VERSION).tar.gz
+
+JS_DIR ?= $(shell ocamlfind query $(NAME))
+
+js-install:
+	install -m 0644 js/$(NAME).js $(JS_DIR)
+
+js-uninstall:
+	rm $(JS_DIR)/$(NAME).js
 
 release:
 	git tag -a v$(VERSION) -m "Version $(VERSION)."
