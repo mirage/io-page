@@ -24,17 +24,18 @@ let page_size = 1 lsl 12
 
 let length t = Array1.dim t
 
-external alloc_pages: int -> t = "caml_alloc_pages"
+external alloc_pages: bool -> int -> t = "caml_alloc_pages"
 
 let get n =
   if n < 0
   then raise (Invalid_argument "Io_page.get cannot allocate a -ve number of pages")
   else if n = 0
   then Array1.create char c_layout 0
-  else
-    try alloc_pages n with _ ->
+  else (
+    try alloc_pages false n with Out_of_memory ->
     Gc.compact ();
-    try alloc_pages n with _ -> raise Out_of_memory
+    alloc_pages true n
+  )
 
 let get_order order = get (1 lsl order)
 
