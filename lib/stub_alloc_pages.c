@@ -44,9 +44,9 @@
    call free() whenever all sub-bigarrays are unreachable.
  */
 CAMLprim value
-caml_alloc_pages(value n_pages)
+caml_alloc_pages(value did_gc, value n_pages)
 {
-  CAMLparam1(n_pages);
+  CAMLparam2(did_gc, n_pages);
   size_t len = Int_val(n_pages) * PAGE_SIZE;
   /* If the allocation fails, return None. The ocaml layer will
      be able to trigger a full GC which just might run finalizers
@@ -59,8 +59,9 @@ caml_alloc_pages(value n_pages)
   int ret = posix_memalign(&block, PAGE_SIZE, len);
   if (ret < 0) {
 #endif
-    printk("memalign(%d, %zu) failed.\n", PAGE_SIZE, len);
-    caml_failwith("memalign");
+    if (Bool_val(did_gc))
+      printk("Io_page: memalign(%d, %zu) failed, even after GC.\n", PAGE_SIZE, len);
+    caml_raise_out_of_memory();
   }
   /* Explicitly zero the page before returning it */
   memset(block, 0, len);
