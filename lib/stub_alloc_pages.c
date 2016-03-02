@@ -30,6 +30,9 @@
 #define PAGE_SIZE 4096
 #define printk printf
 #endif
+#ifdef _WIN32
+#include <malloc.h>
+#endif
 
 #include <string.h>
 
@@ -53,6 +56,9 @@ caml_alloc_pages(value did_gc, value n_pages)
      of unused bigarrays which will free some memory. */
 #ifdef __MINIOS__
   void* block = _xmalloc(len, PAGE_SIZE);
+  if (block == NULL) {
+#elif _WIN32
+  void *block = _aligned_malloc(len, PAGE_SIZE);
   if (block == NULL) {
 #else
   void* block = NULL;
