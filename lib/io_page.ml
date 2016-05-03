@@ -26,6 +26,10 @@ let length t = Array1.dim t
 
 external alloc_pages: bool -> int -> t = "caml_alloc_pages"
 
+external c_address : t -> int = "caml_address"
+
+let address t = c_address t
+
 let get n =
   if n < 0
   then raise (Invalid_argument "Io_page.get cannot allocate a -ve number of pages")

@@ -25,6 +25,10 @@ type buf = Cstruct.t
 type t = private (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array1.t
 (** Type of memory blocks. *)
 
+val address : t -> int
+(** [address t] returns the address of the underlying bigarray of [t].  This is
+    useful for debugging *)
+
 val page_size : int
 (** Size of one page of memory in bytes. *)
 
