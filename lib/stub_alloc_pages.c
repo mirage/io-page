@@ -42,13 +42,6 @@
 #include <caml/fail.h>
 #include <caml/bigarray.h>
 
-CAMLprim value
-caml_address(value t)
-{
-  long data = (long)Caml_ba_data_val(t) ;
-  return Val_long(data);
-}
-
 /* Allocate a page-aligned bigarray of length [n_pages] pages.
    Since CAML_BA_MANAGED is set the bigarray C finaliser will
    call free() whenever all sub-bigarrays are unreachable.

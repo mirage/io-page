@@ -22,6 +22,7 @@ Library io_page
   Findlibname:        io-page
   Modules:            Io_page
   BuildDepends:       cstruct, bytes
+  CSources:           stub_get_addr.c
   XMETAExtraLines:    xen_linkopts = "-lio_page_xen_stubs"
 
 Library io_page_unix
@@ -52,7 +53,6 @@ Executable portable
   Custom:             true
   Install:            false
   BuildDepends:       io-page.unix, io-page, oUnit
-  CSources:           stub_get_addr.c
 
 Test portable
   Command:            ./portable.native

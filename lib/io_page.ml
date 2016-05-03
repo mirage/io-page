@@ -26,9 +26,11 @@ let length t = Array1.dim t
 
 external alloc_pages: bool -> int -> t = "caml_alloc_pages"
 
-external c_address : t -> int = "caml_address"
+external c_get_addr : t -> nativeint = "caml_get_addr"
 
-let address t = c_address t
+let get_addr t = c_get_addr t
+
+let get_page t = Nativeint.(div (get_addr t) (of_int page_size))
 
 let get n =
   if n < 0
