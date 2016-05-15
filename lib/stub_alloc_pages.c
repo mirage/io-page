@@ -58,7 +58,14 @@ caml_alloc_pages(value did_gc, value n_pages)
   void* block = _xmalloc(len, PAGE_SIZE);
   if (block == NULL) {
 #elif _WIN32
-  void *block = _aligned_malloc(len, PAGE_SIZE);
+  /* NB we can't use _aligned_malloc because we can't get OCaml to
+     finalize with _aligned_free. Regular free() will not work. */
+  static int printed_warning = 0;
+  if (!printed_warning) {
+    printed_warning = 1;
+    printk("WARNING: Io_page on Windows doesn't guarantee alignment\n");
+  }
+  void *block = malloc(len);
   if (block == NULL) {
 #else
   void* block = NULL;
