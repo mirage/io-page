@@ -3,6 +3,7 @@ maintainer:   "anil@recoil.org"
 homepage:     "https://github.com/mirage/io-page"
 dev-repo:     "https://github.com/mirage/io-page.git"
 bug-reports:  "https://github.com/mirage/io-page/issues"
+license:      "ISC"
 authors: [
   "Anil Madhavapeddy"
   "Dave Scott"
