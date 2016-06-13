@@ -38,7 +38,7 @@ setup.data:
 configure:
 	$(SETUP) -configure $(CONFIGUREFLAGS)
 
-.PHONY: build doc test all install uninstall reinstall clean distclean configure js-install js-uninstall
+.PHONY: build doc test all install uninstall reinstall clean distclean configure
 
 # OASIS_STOP
 

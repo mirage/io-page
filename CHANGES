@@ -1,3 +1,7 @@
+1.6.1 (13-Jun-2016)
+* Fix crash on Win32 when the GC calls the wrong `free` function (#31 from @djs55)
+* Add a LICENSE file (#32 from @djs55)
+
 1.6.0 (3-Mar-2016)
 * Add support for Win32
 

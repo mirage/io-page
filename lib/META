@@ -1,6 +1,6 @@
 # OASIS_START
-# DO NOT EDIT (digest: 164e3b398e59d063b32cbb22a99e42fb)
-version = "1.6.0"
+# DO NOT EDIT (digest: f47d4b771c303c0f2dbb8d82078deb83)
+version = "1.6.1"
 description = "Page-aligned memory allocator"
 requires = "cstruct bytes"
 archive(byte) = "io_page.cma"
@@ -10,7 +10,7 @@ archive(native, plugin) = "io_page.cmxs"
 xen_linkopts = "-lio_page_xen_stubs"
 exists_if = "io_page.cma"
 package "xen" (
- version = "1.6.0"
+ version = "1.6.1"
  description = "Page-aligned memory allocator"
  requires = "bigarray"
  archive(byte) = "io_page_xen.cma"
@@ -21,7 +21,7 @@ package "xen" (
 )
 
 package "unix" (
- version = "1.6.0"
+ version = "1.6.1"
  description = "Page-aligned memory allocator"
  requires = "bigarray"
  archive(byte) = "io_page_unix.cma"
