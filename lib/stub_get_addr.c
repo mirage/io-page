@@ -39,8 +39,8 @@ CAMLprim value
 caml_get_addr(value page)
 {
   CAMLparam1(page);
-  CAMLlocal1(int64);
+  CAMLlocal1(nativeint);
   void *data = Caml_ba_data_val(page);
-  int64 = caml_copy_int64((uint64_t) data);
-  CAMLreturn(int64);
+  nativeint = caml_copy_nativeint((intnat) data);
+  CAMLreturn(nativeint);
 }

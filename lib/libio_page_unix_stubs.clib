@@ -1,4 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 15b1c070575378661f0ff9942636072f)
+# DO NOT EDIT (digest: 3800989c0f33cbd2bd0ba160be86a633)
 stub_alloc_pages.o
+stub_get_addr.o
 # OASIS_STOP
