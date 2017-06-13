@@ -21,7 +21,7 @@ Library io_page
   Path:               lib
   Findlibname:        io-page
   Modules:            Io_page
-  BuildDepends:       cstruct, bytes
+  BuildDepends:       cstruct (>= 2.0.0), bytes
   XMETAExtraLines:    xen_linkopts = "-lio_page_xen_stubs"
 
 Library io_page_unix

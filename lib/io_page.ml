@@ -21,6 +21,7 @@ type t = (char, int8_unsigned_elt, c_layout) Array1.t
 type buf = Cstruct.t
 
 let page_size = 1 lsl 12
+let page_alignment = 4096
 
 let length t = Array1.dim t
 
@@ -69,8 +70,8 @@ exception Buffer_not_multiple_of_page_size
 
 let of_cstruct_exn x =
   let ba = Cstruct.to_bigarray x in
-  (* TODO: should check [ba] is page-aligned instead, but that requires C code. *)
-  if x.Cstruct.off <> 0 then raise Buffer_is_not_page_aligned;
+  if not(Cstruct.check_alignment x page_alignment) then
+    raise Buffer_is_not_page_aligned;
   if Array1.dim ba land (page_size - 1) <> 0 then raise Buffer_not_multiple_of_page_size;
   ba
 
