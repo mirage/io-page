@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 45503f7f61e18b5f4ad8e0ef6be723e7)
+# DO NOT EDIT (digest: 3632024632534d8f4d504784bbdf87a0)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -22,15 +22,17 @@ true: annot, bin_annot
 "lib/io_page_unix.cmxs": use_io_page_unix
 <lib/io_page_unix.{cma,cmxa}>: use_libio_page_unix_stubs
 "lib/stub_alloc_pages.c": pkg_bigarray
+"lib/stub_get_addr.c": pkg_bigarray
 # Library io_page_xen
 "lib/io_page_xen.cmxs": use_io_page_xen
 <lib/*.ml{,i,y}>: oasis_library_io_page_xen_ccopt
 "lib/stub_alloc_pages_xen.c": oasis_library_io_page_xen_ccopt
+"lib/stub_get_addr_xen.c": oasis_library_io_page_xen_ccopt
 <lib/io_page_xen.{cma,cmxa}>: use_libio_page_xen_stubs
 <lib/*.ml{,i,y}>: pkg_bigarray
 "lib/stub_alloc_pages_xen.c": pkg_bigarray
+"lib/stub_get_addr_xen.c": pkg_bigarray
 # Executable portable
-<lib_test/portable.{native,byte}>: use_libportable_stubs
 <lib_test/portable.{native,byte}>: pkg_bigarray
 <lib_test/portable.{native,byte}>: pkg_bytes
 <lib_test/portable.{native,byte}>: pkg_cstruct
@@ -43,11 +45,5 @@ true: annot, bin_annot
 <lib_test/*.ml{,i,y}>: pkg_oUnit
 <lib_test/*.ml{,i,y}>: use_io_page
 <lib_test/*.ml{,i,y}>: use_io_page_unix
-"lib_test/stub_get_addr.c": pkg_bigarray
-"lib_test/stub_get_addr.c": pkg_bytes
-"lib_test/stub_get_addr.c": pkg_cstruct
-"lib_test/stub_get_addr.c": pkg_oUnit
-"lib_test/stub_get_addr.c": use_io_page
-"lib_test/stub_get_addr.c": use_io_page_unix
 <lib_test/portable.{native,byte}>: custom
 # OASIS_STOP

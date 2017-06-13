@@ -32,7 +32,7 @@ Library io_page_unix
   Findlibname:        unix
   Modules:            Io_page_unix # Dummy module to compile the library
   BuildDepends:       bigarray
-  CSources:           stub_alloc_pages.c
+  CSources:           stub_alloc_pages.c , stub_get_addr.c
 
 Library io_page_xen
   Build$:             flag(xen)
@@ -41,7 +41,7 @@ Library io_page_xen
   FindlibParent:      io_page
   Findlibname:        xen
   BuildDepends:       bigarray
-  CSources:           stub_alloc_pages_xen.c
+  CSources:           stub_alloc_pages_xen.c , stub_get_addr_xen.c
   CCOpt:              -O2 $XEN_CFLAGS
 
 Executable portable
@@ -52,7 +52,6 @@ Executable portable
   Custom:             true
   Install:            false
   BuildDepends:       io-page.unix, io-page, oUnit
-  CSources:           stub_get_addr.c
 
 Test portable
   Command:            ./portable.native

@@ -28,6 +28,13 @@ type t = private (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.
 val page_size : int
 (** Size of one page of memory in bytes. *)
 
+val get_addr : t -> nativeint
+(** [get_addr t] returns the address of the underlying bigarray of [t].
+    This is useful for debugging *)
+
+val get_page : t -> nativeint
+(** [get_page t] returns the page offset (get_addr t) mod page_size, starting at 0 .*)
+
 val get : int -> t
 (** [get n] allocates and returns a memory block of [n] pages. If
     there is not enough memory, an [Out_of_memory] exception is
