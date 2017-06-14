@@ -6,7 +6,11 @@ install: wget https://raw.githubusercontent.com/ocaml/ocaml-travisci-skeleton/ma
 script: bash -ex ./.travis-docker.sh
 env:
   global:
-  - PACKAGE="io-page"
+  - PINS="io-page:. io-page-unix:. io-page-xen:."
   matrix:
-  - DISTRO="alpine-3.5"    OCAML_VERSION=4.02.3 DEPOPTS="mirage-xen-ocaml"
-  - DISTRO="debian-stable" OCAML_VERSION=4.03.0 DEPOPTS="mirage-xen-ocaml"
+  - DISTRO="alpine-3.5"    OCAML_VERSION=4.04.1 PACKAGE="io-page"
+  - DISTRO="alpine-3.5"    OCAML_VERSION=4.04.1 PACKAGE="io-page-unix"
+  - DISTRO="alpine-3.5"    OCAML_VERSION=4.04.1 PACKAGE="io-page-xen"
+  - DISTRO="debian-stable" OCAML_VERSION=4.03.0 PACKAGE="io-page"
+  - DISTRO="debian-stable" OCAML_VERSION=4.03.0 PACKAGE="io-page-unix"
+  - DISTRO="debian-stable" OCAML_VERSION=4.03.0 PACKAGE="io-page-xen"
