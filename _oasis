@@ -30,7 +30,7 @@ Library io_page_unix
   Path:               lib
   FindlibParent:      io_page
   Findlibname:        unix
-  Modules:            Io_page_unix # Dummy module to compile the library
+  Modules:            Io_page_unix_dummy # Dummy module to compile the library
   BuildDepends:       bigarray
   CSources:           stub_alloc_pages.c , stub_get_addr.c
 
@@ -40,6 +40,7 @@ Library io_page_xen
   Path:               lib
   FindlibParent:      io_page
   Findlibname:        xen
+  Modules:            Io_page_xen_dummy # Dummy module to compile the library
   BuildDepends:       bigarray
   CSources:           stub_alloc_pages_xen.c , stub_get_addr_xen.c
   CCOpt:              -O2 $XEN_CFLAGS
