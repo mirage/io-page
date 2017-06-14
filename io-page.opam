@@ -11,25 +11,13 @@ authors: [
 ]
 tags: ["org:mirage"]
 build: [
-  [ "./configure" "--prefix" prefix
-     "--%{mirage-xen-ocaml:enable}%-xen"
-  ]
-  [make]
+  [ "jbuilder" "subst"] {pinned}
+  [ "jbuilder" "build" "-p" name "-j" jobs ]
 ]
-install: [
-  [make "install"]
-  [make "js-install"]
-]
-remove: [
-  [make "js-uninstall"]
-  ["ocamlfind" "remove" "io-page"]
-]
+
 depends: [
-  "ocamlfind"
+  "jbuilder"  {build & >="1.0+beta9"}
+  "configurator" {build}
   "cstruct" {>= "2.0.0"}
-  "ounit" {test}
-]
-depopts: [
-  "mirage-xen-ocaml"
 ]
 available: [ocaml-version >= "4.02.3"]
