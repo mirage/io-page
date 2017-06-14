@@ -1,3 +1,11 @@
+## 2.0.0 (2017-06-14):
+* Split into 3 opam packages
+  - io-page: the common definitions
+  - io-page-unix: the Unix stubs
+  - io-page-xen: the Xen stubs
+- Add a modern Docker-based travis configuration
+- Add the ability to get a unique handle of an `Io_page`
+
 ## 1.6.1 (2016-06-13):
 * Fix crash on Win32 when the GC calls the wrong `free` function (#31 from @djs55)
 * Add a LICENSE file (#32 from @djs55)
