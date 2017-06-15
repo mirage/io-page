@@ -11,8 +11,8 @@ authors: [
 ]
 tags: ["org:mirage"]
 build: [
-  [ "jbuilder" "subst"] {pinned}
-  [ "env" "PKG_CONFIG_PATH=%{prefix}%/lib/pkgconfig" "jbuilder" "build" "-p" name "-j" jobs ]
+  [ "env" "OPAM_PKG_CONFIG_PATH=%{prefix}%/lib/pkgconfig" "jbuilder" "subst"] {pinned}
+  [ "env" "OPAM_PKG_CONFIG_PATH=%{prefix}%/lib/pkgconfig" "jbuilder" "build" "-p" name "-j" jobs ]
 ]
 
 depends: [
