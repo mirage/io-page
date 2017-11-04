@@ -80,7 +80,7 @@ let to_string t =
   for i = 0 to length t - 1 do
     Bytes.set result i t.{i}
   done;
-  result
+  Bytes.to_string result
 
 let get_buf ?(n=1) () =
   to_cstruct (get n)

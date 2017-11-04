@@ -1,3 +1,6 @@
+## 2.0.1 (2017-11-04):
+* Fix build with OCaml 4.06 (and -safe-string)
+
 ## 2.0.0 (2017-06-14):
 * Split into 3 opam packages
   - io-page: the common definitions
