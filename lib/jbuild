@@ -2,7 +2,7 @@
  ((name io_page)
   (public_name io-page)
   (modules (Io_page))
-  (libraries (cstruct bytes))
+  (libraries (cstruct))
   (wrapped false)
 ))
 
