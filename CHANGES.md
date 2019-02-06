@@ -1,5 +1,6 @@
 ## v2.1.0 (2019-02-07)
 * Port to Dune and configurator (@avsm)
+* Upgrade opam metadata to 2.0 (@avsm)
 
 ## 2.0.1 (2017-11-04):
 * Fix build with OCaml 4.06 (and -safe-string)
