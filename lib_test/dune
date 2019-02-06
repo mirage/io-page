@@ -4,7 +4,6 @@
 
 (alias
  (name runtest)
- (deps
-  (:< portable.exe))
- (action
-  (run %{<})))
+ (package io-page-unix)
+ (deps (:< portable.exe))
+ (action (run %{<})))
