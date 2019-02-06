@@ -18,3 +18,9 @@ build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
 dev-repo: "git+https://github.com/mirage/io-page.git"
+synopsis: "Support for efficient handling of I/O memory pages on Unix"
+description: """
+IO pages are page-aligned, and wrapped in the `Cstruct` library to avoid
+copying the data contained within the page.
+"""
+

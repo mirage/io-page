@@ -11,16 +11,13 @@
  (libraries io-page)
  (modules Io_page_xen_dummy)
  (c_names stub_alloc_pages_xen stub_get_addr_xen)
- (c_flags
-  (:include c_flags_xen.sexp))
+ (c_flags (:include c_flags_xen.sexp))
  (wrapped false))
 
 (rule
  (targets c_flags_xen.sexp)
- (deps
-  (:< config/discover.exe))
- (action
-  (run %{<} -ocamlc %{ocamlc})))
+ (deps config/discover.exe)
+ (action (run %{deps})))
 
 (library
  (name io_page_unix)
