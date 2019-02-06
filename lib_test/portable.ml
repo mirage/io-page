@@ -1,7 +1,7 @@
 open OUnit
 
 let test_alignment () =
-  for i = 0 to 1000 do
+  for _ = 0 to 1000 do
     let page = Io_page.get 1 in
     let addr = Io_page.get_addr page in
     assert_equal ~printer:Nativeint.to_string 0n Nativeint.(rem addr 4096n)
