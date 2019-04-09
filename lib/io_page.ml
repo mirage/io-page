@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *)
 
-open Bigarray
+open Bigarray_compat
 
 type t = (char, int8_unsigned_elt, c_layout) Array1.t
 
@@ -50,7 +50,7 @@ let to_pages t =
   assert(length t mod page_size = 0);
   let rec loop off acc =
     if off < (length t)
-    then loop (off + page_size) (Bigarray.Array1.sub t off page_size :: acc)
+    then loop (off + page_size) (Bigarray_compat.Array1.sub t off page_size :: acc)
     else acc in
   List.rev (loop 0 [])
 
@@ -85,7 +85,7 @@ let to_string t =
 let get_buf ?(n=1) () =
   to_cstruct (get n)
 
-let blit src dest = Bigarray.Array1.blit src dest
+let blit src dest = Bigarray_compat.Array1.blit src dest
 
 (* TODO: this is extremely inefficient.  Should use a ocp-endian
    blit rather than a byte-by-byte *)
