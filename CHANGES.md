@@ -1,3 +1,6 @@
+## v2.2.0 (2019-04-09)
+* Use bigarray_compat (#56, @TheLortex)
+
 ## v2.1.0 (2019-02-07)
 * Port to Dune and configurator (@avsm)
 * Upgrade opam metadata to 2.0 (@avsm)
