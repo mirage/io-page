@@ -7,9 +7,8 @@ homepage: "https://github.com/mirage/io-page"
 bug-reports: "https://github.com/mirage/io-page/issues"
 depends: [
   "ocaml" {>= "4.02.3"}
-  "io-page"
-  "dune" {build & >= "1.0"}
-  "configurator" {build}
+  "dune"
+  "io-page" {=version}
   "cstruct" {>= "2.0.0"}
   "ounit" {with-test}
 ]

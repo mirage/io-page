@@ -13,3 +13,4 @@ env:
   - DISTRO="debian-stable" OCAML_VERSION=4.04 PACKAGE="io-page-xen"
   - DISTRO="alpine"        OCAML_VERSION=4.06 PACKAGE="io-page"
   - DISTRO="alpine"        OCAML_VERSION=4.07 PACKAGE="io-page"
+  - DISTRO="alpine"        OCAML_VERSION=4.08 PACKAGE="io-page"

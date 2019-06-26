@@ -1,3 +1,9 @@
+## v2.3.0 (2019-06-20)
+* Hook in the JavaScript stubs to dune (#55 @jonludlam)
+* Remove unnecessary dependency on `configurator`, which pulled
+  in a jbuilder dependency. We have used `dune.configurator` since the
+  v2.1.0 release (@avsm)
+
 ## v2.2.0 (2019-04-09)
 * Use bigarray_compat (#56, @TheLortex)
 
