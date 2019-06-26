@@ -3,6 +3,7 @@
  (public_name io-page)
  (modules Io_page)
  (libraries cstruct bigarray-compat)
+ (js_of_ocaml (javascript_files io-page.js))
  (wrapped false))
 
 (library
