@@ -1,0 +1,7 @@
+(library
+ (name io_page)
+ (public_name io-page)
+ (virtual_modules io_page)
+ (wrapped false)
+ (default_implementation unix)
+ (libraries cstruct bigarray-compat))

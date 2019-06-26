@@ -1,4 +1,2 @@
-# JBUILDER_GEN
-
+# DUNE_GEN
 xen_linkopts = "-lio_page_xen_stubs"
-

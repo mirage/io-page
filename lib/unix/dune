@@ -1,0 +1,10 @@
+(copy_files ../*.c)
+(copy_files ../impl/io_page.ml)
+
+(library
+  (name io_page_unix)
+  (public_name io-page-unix)
+  (implements io-page)
+  (libraries bigarray-compat cstruct)
+  (c_names stub_alloc_pages stub_get_addr)
+  (variant unix))

@@ -1,0 +1,16 @@
+(copy_files ../*.c)
+(copy_files ../impl/io_page.ml)
+
+(library
+  (name io_page_xen)
+  (public_name io-page-xen)
+  (implements io-page)
+  (libraries bigarray-compat cstruct)
+  (c_names stub_alloc_pages stub_get_addr)
+  (c_flags (:include c_flags_xen.sexp))
+  (variant xen))
+
+(rule
+ (targets c_flags_xen.sexp)
+ (deps ../config/discover.exe)
+ (action (run %{deps})))

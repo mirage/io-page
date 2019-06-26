@@ -1,3 +1,21 @@
+## v3.0.0
+
+* Use `virtual_modules` in Dune 1.7 to allow use of the interface
+  file separately from the implementations.
+
+  We now provide separate implementations that use dune variants
+  so that they can be found via a variants tag search:
+
+  - `unix` (Unix or Windows)
+  - `js` (JavaScript)
+  - `xen` (Xen)
+
+  This cleans up the utop toplevel support as well to work by
+  default now. (@avsm, fixes #50)
+ 
+* Use implicit transitive dependencies, which will become the
+  default in dune 2.0
+ 
 ## v2.3.0 (2019-06-20)
 * Hook in the JavaScript stubs to dune (#55 @jonludlam)
 * Remove unnecessary dependency on `configurator`, which pulled

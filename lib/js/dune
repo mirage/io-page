@@ -1,0 +1,9 @@
+(copy_files ../impl/io_page.ml)
+
+(library
+  (name io_page_js)
+  (public_name io-page-js)
+  (libraries bigarray-compat cstruct)
+  (implements io-page)
+  (js_of_ocaml (javascript_files io-page.js))
+  (variant js))
