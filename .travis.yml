@@ -6,7 +6,7 @@ install: wget https://raw.githubusercontent.com/ocaml/ocaml-travisci-skeleton/ma
 script: bash -ex ./.travis-docker.sh
 env:
   global:
-  - PINS="io-page.dev:. io-page-unix.dev:. io-page-xen.dev:. io-page-js.dev:."
+  - PINS="io-page.dev:. io-page-unix.dev:. io-page-xen.dev:. io-page-js.dev:. dune:--dev"
   - PACKAGE=io-page
   - DEPOPTS="io-page-unix io-page-xen io-page-js"
   matrix:
