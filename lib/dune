@@ -4,19 +4,18 @@
  (modules Io_page)
  (libraries cstruct bigarray-compat)
  (c_names stub_alloc_pages stub_get_addr)
- (js_of_ocaml (javascript_files io-page.js))
+ (js_of_ocaml
+  (javascript_files io-page.js))
  (wrapped false))
 
 (library
  (name io_page_unix)
  (public_name io-page-unix)
  (modules)
- (libraries io-page)
-)
+ (libraries io-page))
 
 (library
  (name io_page_xen)
  (public_name io-page-xen)
  (modules)
- (libraries io-page)
-)
+ (libraries io-page))
