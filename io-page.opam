@@ -11,10 +11,12 @@ depends: [
   "dune"
   "cstruct" {>= "2.0.0"}
   "bigarray-compat"
+  "ounit" {with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/mirage/io-page.git"
 synopsis: "Support for efficient handling of I/O memory pages"
@@ -22,4 +24,3 @@ description: """
 IO pages are page-aligned, and wrapped in the `Cstruct` library to avoid
 copying the data contained within the page.
 """
-
