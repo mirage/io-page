@@ -2,5 +2,8 @@
  (name io_page)
  (public_name io-page)
  (libraries cstruct bigarray-compat)
- (c_names stub_alloc_pages stub_get_addr)
+ (foreign_stubs
+  (language c)
+  (names stub_alloc_pages stub_get_addr)
+  (flags :standard))
  (js_of_ocaml (javascript_files io-page.js)))
