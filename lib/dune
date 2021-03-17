@@ -6,4 +6,5 @@
   (language c)
   (names stub_alloc_pages stub_get_addr)
   (flags :standard))
- (js_of_ocaml (javascript_files io-page.js)))
+ (js_of_ocaml
+  (javascript_files io-page.js)))
