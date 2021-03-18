@@ -47,7 +47,7 @@
    call free() whenever all sub-bigarrays are unreachable.
  */
 CAMLprim value
-mirage_alloc_pages(value did_gc, value n_pages)
+caml_mirage_iopage_alloc_pages(value did_gc, value n_pages)
 {
   CAMLparam2(did_gc, n_pages);
   size_t len = Int_val(n_pages) * PAGE_SIZE;
