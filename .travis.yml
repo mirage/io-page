@@ -9,7 +9,7 @@ env:
   - PINS="io-page.dev:."
   matrix:
   - DISTRO="debian-stable" OCAML_VERSION=4.08 PACKAGE="io-page"
-  - DISTRO="alpine"        OCAML_VERSION=4.08 PACKAGE="io-page" TESTS=false POST_INSTALL_HOOK=./.test-mirage.sh
+  - DISTRO="debian-stable" OCAML_VERSION=4.08 PACKAGE="io-page" TESTS=false POST_INSTALL_HOOK=./.test-mirage.sh
   - DISTRO="alpine"        OCAML_VERSION=4.09 PACKAGE="io-page"
   - DISTRO="alpine"        OCAML_VERSION=4.10 PACKAGE="io-page"
   - DISTRO="alpine"        OCAML_VERSION=4.11 PACKAGE="io-page"
