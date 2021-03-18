@@ -36,7 +36,7 @@
 #include <stdlib.h>
 
 CAMLprim value
-mirage_get_addr(value page)
+caml_mirage_iopage_get_addr(value page)
 {
   CAMLparam1(page);
   CAMLlocal1(nativeint);

@@ -7,6 +7,7 @@ homepage: "https://github.com/mirage/io-page"
 bug-reports: "https://github.com/mirage/io-page/issues"
 doc: "https://mirage.github.io/io-page/"
 depends: [
+  "conf-pkg-config" {build}
   "ocaml" {>= "4.02.3"}
   "dune"
   "cstruct" {>= "2.0.0"}
@@ -17,6 +18,13 @@ build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+conflicts: [
+  "mirage-xen" {< "6.0.0"}
+  "ocaml-freestanding" {< "0.4.1"}
+]
+depopts: [
+  "ocaml-freestanding"
 ]
 dev-repo: "git+https://github.com/mirage/io-page.git"
 synopsis: "Support for efficient handling of I/O memory pages"

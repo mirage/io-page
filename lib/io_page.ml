@@ -25,9 +25,9 @@ let page_alignment = 4096
 
 let length t = Array1.dim t
 
-external alloc_pages: bool -> int -> t = "mirage_alloc_pages"
+external alloc_pages: bool -> int -> t = "caml_mirage_iopage_alloc_pages"
 
-external c_get_addr : t -> nativeint = "mirage_get_addr"
+external c_get_addr : t -> nativeint = "caml_mirage_iopage_get_addr"
 
 let get_addr t = c_get_addr t
 
