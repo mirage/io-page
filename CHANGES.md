@@ -1,3 +1,13 @@
+## v2.4.0 (2021-02-22)
+* Use workspace flags (@TheLortex, #60)
+* Use ocamlformat (@TheLortex, #60)
+* **breaking changes** Remove io-page-xen and io-page-unix split (@samoht, #60)
+* Update CI scripts (@samoht, #60)
+* **breaking changes** Update the C layout of io-page according MirageOS 3/4 (@dinosaure, #62)
+  JS/C functions are renamed from `mirage_*` to `caml_mirage_iopage_*`
+* Add ocaml-freestanding and pkg-config as dependencies of `io-page`
+  To be able to 'cross'-compile to Solo5
+
 ## v2.3.0 (2019-06-20)
 * Hook in the JavaScript stubs to dune (#55 @jonludlam)
 * Remove unnecessary dependency on `configurator`, which pulled
