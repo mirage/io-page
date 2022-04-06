@@ -22,7 +22,9 @@
 
 #include <fcntl.h>
 #include <string.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 #include <stdint.h>
 
 #include <caml/alloc.h>

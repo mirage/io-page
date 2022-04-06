@@ -1,3 +1,6 @@
+## Pending
+* Skip unnecessary and missing unistd.h for MSVC compiler (@jonahbeckford, #66)
+
 ## v2.4.0 (2021-02-22)
 * Use workspace flags (@TheLortex, #60)
 * Use ocamlformat (@TheLortex, #60)
