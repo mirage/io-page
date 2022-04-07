@@ -34,7 +34,6 @@
 #include <caml/callback.h>
 #include <caml/bigarray.h>
 
-#define PAGE_SIZE 4096
 #include <stdlib.h>
 
 CAMLprim value

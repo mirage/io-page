@@ -30,7 +30,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define PAGE_SIZE 4096
-#define printk printf
 #endif
 #ifdef _WIN32
 #include <malloc.h>
@@ -56,16 +55,13 @@ mirage_iopage_alloc_pages(value did_gc, value n_pages)
   /* If the allocation fails, return None. The ocaml layer will
      be able to trigger a full GC which just might run finalizers
      of unused bigarrays which will free some memory. */
-#ifdef __MINIOS__
-  void* block = _xmalloc(len, PAGE_SIZE);
-  if (block == NULL) {
-#elif _WIN32
+#ifdef _WIN32
   /* NB we can't use _aligned_malloc because we can't get OCaml to
      finalize with _aligned_free. Regular free() will not work. */
   static int printed_warning = 0;
   if (!printed_warning) {
     printed_warning = 1;
-    printk("WARNING: Io_page on Windows doesn't guarantee alignment\n");
+    printf("WARNING: Io_page on Windows doesn't guarantee alignment\n");
   }
   void *block = malloc(len);
   if (block == NULL) {
@@ -75,7 +71,7 @@ mirage_iopage_alloc_pages(value did_gc, value n_pages)
   if (ret < 0) {
 #endif
     if (Bool_val(did_gc))
-      printk("Io_page: memalign(%d, %zu) failed, even after GC.\n", PAGE_SIZE, len);
+      printf("Io_page: memalign(%d, %zu) failed, even after GC.\n", PAGE_SIZE, len);
     caml_raise_out_of_memory();
   }
   /* Explicitly zero the page before returning it */
