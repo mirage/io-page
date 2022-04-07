@@ -4,7 +4,7 @@
 * Drop caml_ prefix from C symbols (@hannesm, #64)
 * Remove bigarray-compat dependency (@hannesm, #67)
 * Raise lower bound to OCaml 4.08.0 (@hannesm, #67)
-* Make freestanding compilation possible without opam (@sternenseeman, #65)
+* Make freestanding compilation possible without opam (@sternenseemann, #65)
 
 ## v2.4.0 (2021-02-22)
 * Use workspace flags (@TheLortex, #60)
