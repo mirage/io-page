@@ -8,14 +8,13 @@ bug-reports: "https://github.com/mirage/io-page/issues"
 doc: "https://mirage.github.io/io-page/"
 depends: [
   "conf-pkg-config" {build}
-  "ocaml" {>= "4.02.3"}
+  "ocaml" {>= "4.08.0"}
   "dune"
   "cstruct" {>= "2.0.0"}
-  "bigarray-compat"
   "ounit" {with-test}
 ]
 build: [
-  ["dune" "subst"] {pinned}
+  ["dune" "subst"] {dev}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
