@@ -15,11 +15,6 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifdef __MINIOS__
-#include <mini-os/os.h>
-#include <mini-os/console.h>
-#include <mini-os/xmalloc.h>
-#else
 #define _GNU_SOURCE
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -30,7 +25,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define PAGE_SIZE 4096
-#endif
 #ifdef _WIN32
 #include <malloc.h>
 #endif
