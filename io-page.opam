@@ -11,7 +11,7 @@ depends: [
   "ocaml" {>= "4.08.0"}
   "dune" {>= "2.6"}
   "cstruct" {>= "2.0.0"}
-  "ounit" {with-test}
+  "ounit2" {with-test}
 ]
 build: [
   ["dune" "subst"] {dev}
